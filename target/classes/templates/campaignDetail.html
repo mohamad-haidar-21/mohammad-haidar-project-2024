@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Campaign Details</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <!-- Campaign Details -->
+      <h1 class="mb-4">Campaign Details</h1>
+
+      <div class="card mb-4">
+        <div class="card-body">
+          <h2 class="card-title" th:text="${campaign.title}">Campaign Title</h2>
+          <p class="card-text" th:text="${campaign.description}"></p>
+          <p><strong>Goal: </strong><span th:text="${campaign.goalAmount}"></span></p>
+          <p><strong>Current Amount: </strong><span th:text="${campaign.currentAmount}"></span></p>
+        </div>
+      </div>
+
+      <!-- Donation Form -->
+      <div class="card">
+        <div class="card-header">
+          <h3>Donate to this campaign</h3>
+        </div>
+        <div class="card-body">
+          <form th:action="@{/donate}" th:object="${donationDto}" method="post">
+            <input type="hidden" th:field="*{campaignId}" th:value="${campaign.id}" />
+
+            <div class="form-group">
+              <label for="amount">Donation Amount</label>
+              <input type="number" class="form-control" id="amount" th:field="*{amount}" placeholder="Enter donation amount" required />
+            </div>
+
+            <button type="submit" class="btn btn-primary">Donate</button>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

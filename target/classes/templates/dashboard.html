@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard</title>
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+        integrity="sha384-T3B4xglR3D2QPVNHO/U0f5r7HtkID5O02d300/bK4x04hUF7T215607850/dist/css/bootstrap.min.css" crossorigin="anonymous">
+</head>
+<body>
+<header class="container-fluid py-3 bg-light border-bottom">
+  <div class="container d-flex justify-content-between align-items-center">
+    <h1 class="mb-0">Dashboard</h1>
+    <p class="mb-0">Welcome, <span th:text="${user.firstName}"></span>!</p>
+  </div>
+</header>
+<main class="container mt-5">
+  <div class="row row-cols-1 row-cols-md-2 g-4">
+    <div class="col">
+      <a th:href="@{/users/profile(username=${user.username})}" class="btn btn-primary btn-lg d-flex justify-content-between align-items-center">
+        View Profile
+        <span class="fs-4 bi bi-person-circle"></span></a>
+    </div>
+    <div class="col">
+      <a th:href="@{/campaigns}" class="btn btn-info btn-lg d-flex justify-content-between align-items-center">
+        Show Campaigns
+        <span class="fs-4 bi bi-list-ul"></span></a>
+    </div>
+    <div class="col">
+      <a th:href="@{/campaigns/create}" class="btn btn-success btn-lg d-flex justify-content-between align-items-center">
+        Create Campaign
+        <span class="fs-4 bi bi-plus-circle"></span></a>
+    </div>
+    <div class="col">
+      <a th:href="@{/campaigns/favorites}" class="btn btn-warning btn-lg d-flex justify-content-between align-items-center">
+        Go to Favorite Campaigns
+        <span class="fs-4 bi bi-heart"></span></a>
+    </div>
+  </div>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
